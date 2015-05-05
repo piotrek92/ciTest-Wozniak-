@@ -1,0 +1,23 @@
+{
+  "name": "citestwozniak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+//"echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piotrek92/ciTest-Wozniak-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piotrek92/ciTest-Wozniak-/issues"
+  },
+  "homepage": "https://github.com/piotrek92/ciTest-Wozniak-"
+}
