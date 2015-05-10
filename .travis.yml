@@ -9,6 +9,6 @@ deploy:
     secure: ZgxNARNeWRYVwb4mKInxdhO+LpYP5Pdqffz4+MCxmNc5Dqgb67phr6CLnfQocWiLk0rD3AfgJSCPiHrRYFoRQluqOqjznSqKp+TB0n0eUZ2sEQcaXzWVhsCHuvbdGItz1hAafsectI2UvGQCwGpS+1RjGln/31DvBb4TwE20Cyg=
   bucket: deploy-weeia
   upload-dir: wozniak
-  acl: 'READ'
+  acl: public_read
   on:
     repo: piotrek92/ciTest-Wozniak-
