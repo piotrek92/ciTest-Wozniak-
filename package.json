@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "directories": {
-    "actions": "bucketdane"
+    "actions": "digets"
   },
   "scripts": {
-    "test": "mocha"
+    "digests": "mocha"
+
   },
   "repository": {
     "type": "git",
