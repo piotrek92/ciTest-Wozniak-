@@ -13,7 +13,6 @@
   },
   "homepage": "https://github.com/piotrek92/ciTest-Wozniak-"
 "author": "",
-  "license": "MIT",
   "dependencies": {
     "async": "^0.2.10",
     "aws-sdk": "^2.1.20",
