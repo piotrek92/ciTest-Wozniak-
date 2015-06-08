@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "directories": {
-    "test": "actions"
+    "actions": "bucketdane"
   },
   "scripts": {
     "test": "mocha"
