@@ -20,4 +20,16 @@
     "url": "https://github.com/piotrek92/ciTest-Wozniak-/issues"
   },
   "homepage": "https://github.com/piotrek92/ciTest-Wozniak-"
+
+
+
+"author": "Radek Adamus <adamusr@gmail.com> (https://github.com/radamus/)",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.2.10",
+    "aws-sdk": "^2.1.20",
+    "ejs": "^1.0.0",
+    "moment": "^2.5.1",
+    "webs-weeia": "0.0.2"
+  }
 }
