@@ -23,8 +23,7 @@ var task =  function(request, callback){
 	//$_GET['bucket'], $_GET['key'], $_GET['etag']
 	var bucket =  request.query.bucket;
 	var key =  request.query.key;
-	var etag =  request.query.etag;
-	var ipAddress = request.connection.remoteAddress;
+	
 	//tablica z parametrami do pobrania naszego wrzuconego pliku i meta danych dla getObject
 	var params = {
 		Bucket: bucket,
@@ -43,16 +42,7 @@ var task =  function(request, callback){
 											//MessageBody: bucket+"###"+key,
 											MessageBody: "{\"bucket\":\""+bucket+"\",\"key\":\""+key+"\"} ",
 											QueueUrl: linkKolejki,
-											MessageAttributes: {
-												key: {//dowolna nazwa klucza
-													DataType: 'String',
-													StringValue: key
-												},
-												bucket: {//dowolna nazwa klucza
-													DataType: 'String',
-													StringValue: bucket
-												}
-											}	
+									
 										};
 										//wysłanie wiadomości do kolejki
 										sqs.sendMessage(sendparms, function(err,data2){
@@ -62,17 +52,18 @@ var task =  function(request, callback){
 											}
 											else {
 												console.log("Prosba o wyliczenie sktotu dodana do kolejki");
-												console.log("MessageId: "+data2.MessageId);
+												
 											}
 					
-											callback(null, {template: UPLOAD_TEMPLATE, params:{fileName:key.substring(10), bucket:"wozniak"}});
+											
 											//etag: +etag
 											//IP: +data.Metadata.ip
 											//Uploader: +data.Metadata.uploader
 											});		
-									
+							
 		}		
 						
 	});
-}
-exports.action = task
+		callback(null, {template: UPLOAD_TEMPLATE});	
+};
+exports.action = task;
