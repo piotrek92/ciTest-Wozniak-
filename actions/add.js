@@ -3,7 +3,7 @@ var AWS = require("aws-sdk");
 var helpers = require("../helpers");
 var Policy = require("../s3post").Policy;
 var S3Form = require("../s3post").S3Form;
-var AWS_CONFIG_FILE = "./config.json";
+var AWS_CONFIG_FILE = "config.json";
 var POLICY_FILE = "policy.json";
 var INDEX_TEMPLATE = "index.ejs";
 
