@@ -3,7 +3,7 @@
     				 {"bucket": "lab4-weeia"}, 
     				 {"acl": "public-read"},
 				["starts-with", "$x-amz-meta-uploader",""],
-    				 {"success_action_redirect": "http://54.68.85.150:8080/bucketdane"},   
+    				 {"success_action_redirect": "http://pwlb-1162897340.us-west-2.elb.amazonaws.com/getinfo"},   
     				 ["content-length-range", 0, 1048576]
     				]   
 }

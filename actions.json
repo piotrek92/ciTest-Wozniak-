@@ -4,4 +4,5 @@
 	{"path":"/digest","action":"digest"},
 	{"path":"/bucketdane","action":"bucketdane"},
     {"path":"/add","action":"add"}
+    {"path":"/getinfo","action":"getinfo"}
 ]
