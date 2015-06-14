@@ -2,6 +2,6 @@
 	{"path": "/digestForm", "action":{"template":"digestForm.ejs", "params":[]} },
 	{"path":"/","action":"createform"},	
 	{"path":"/digest","action":"digest"},
-	{"path":"/bucketdane","action":"bucketdane"}
+	{"path":"/bucketdane","action":"bucketdane"},
     {"path":"/add","action":"add"}
 ]
