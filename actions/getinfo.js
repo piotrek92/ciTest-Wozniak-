@@ -10,7 +10,7 @@ var s3 = new AWS.S3();
 //plik z linkiem do kolejki
 var APP_CONFIG_FILE = "./app.json";
 
-var linkKolejki = "https://sqs.us-west-2.amazonaws.com/983680736795/WozniakSQS";
+var linkKolejki = 'https://sqs.us-west-2.amazonaws.com/983680736795/WozniakSQS';
 //obiekt kolejki z aws-sdk
 var sqs=new AWS.SQS();
 var UPLOAD_TEMPLATE = "wyslano.ejs";
