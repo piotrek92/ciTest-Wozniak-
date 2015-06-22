@@ -43,6 +43,9 @@
 
 
 
+
+
+
 <section id="section1" class="panel panel-default">
 			<div class="panel-heading">
 			<div class="container">
@@ -53,9 +56,9 @@
 				<div class="container">
 					<div class="col-xs-5">
 						<% links.forEach(function(elem){ %>
-							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">stary</a> |  
-							<%= elem.nazwa  %><br>
-						<%}); %> 
+							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">     <%= elem.nazwa  %>   </a> |  
+							<br>
+						<% }) ;%> 
 					</div>
 				</div>
 	  		</div>
@@ -64,7 +67,7 @@
 			<footer class="panel-footer">
 				
 			</footer>
-		</section>
+</section>
 		
 	</div>		
 	</body>
