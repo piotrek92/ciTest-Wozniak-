@@ -29,14 +29,7 @@
     	<input type="file" name="file">
     	<p class="help-block">File will be sent to the bucket <%=bucket%> and it's title will be sent to the SQS Que </p>
   </div>
-  <div>
-  
-  	<label for="lista">Lista plików nieprzetworzonych</label>
-	<% links.forEach(function(elem){ %>
-							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">plik</a> |  
-							<%= elem.nazwa  %><br>
-						<% }); %> 
-  	</div>
+ 
 	</div>
 	</div>
 	
@@ -46,6 +39,15 @@
 	</div>
 	</div>
 </form>
+
+ <div>
+  
+  	<label for="lista">Lista plików nieprzetworzonych</label>
+	<% links.forEach(function(elem){ %>
+							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">plik</a> |  
+							<%= elem.nazwa  %><br>
+						<% }); %> 
+  	</div>
 	  		</div>
 			<footer class="panel-footer">
 				
