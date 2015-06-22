@@ -29,15 +29,15 @@ var params = {
 		//przelatujemy przez każdy plik z bucketu
 		for(var i in data.Contents) {
 			//jeżeli nie jest to nazwa bucketu tylko plik
-		if (data.Prefix=="piotrwozniak"){
+	
 				linki.push( {nazwa: data.Contents[i].Key.substring(13)});
 		
-		}
 		
-			if (data.Prefix == "processed"){
+		
+	
 				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(13)});
 		
-		}
+		
 		
 		
 		
