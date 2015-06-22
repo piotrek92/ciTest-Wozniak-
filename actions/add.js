@@ -12,7 +12,17 @@ AWS.config.loadFromPath('./config.json');
 
 var task = function(request, callback){
 	
-	var linki=[];
+
+
+var params = {
+		Bucket: 'lab4-weeia',
+		Prefix: 'piotrwozniak'
+	};
+
+	s3.listObjects(params, function(err, data) {
+		if (err) console.log(err, err.stack);
+		else     console.log(data);
+
 		linki.push( {nazwa: "cokolwiek"});
 	
 	
@@ -27,15 +37,14 @@ var task = function(request, callback){
 	var s3Form = new S3Form(policy);
 	//4. get bucket name
 	var fields=s3Form.generateS3FormFields();
-
-var params = {
-		Bucket: 'lab4-weeia',
-		Prefix: 'piotrwozniak'
-	};
-
-	s3.listObjects(params, function(err, data) {
-		if (err) console.log(err, err.stack);
-		else     console.log(data);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		var linki = [];
@@ -49,7 +58,7 @@ var params = {
 		}
 	
 	
-	});	
+	
 	
 	
 	
@@ -63,5 +72,6 @@ var params = {
 
 					
 
+});
 }
 exports.action = task;
