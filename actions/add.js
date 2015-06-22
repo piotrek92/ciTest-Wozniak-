@@ -11,6 +11,7 @@ var s3 = new AWS.S3();
 AWS.config.loadFromPath('./config.json');
 
 var task = function(request, callback){
+		var linki = [];
 	//1. load configuration
 	var awsConfig = helpers.readJSONFile(AWS_CONFIG_FILE);
 	var policyData = helpers.readJSONFile(POLICY_FILE);
@@ -22,11 +23,38 @@ var task = function(request, callback){
 	var s3Form = new S3Form(policy);
 	//4. get bucket name
 	var fields=s3Form.generateS3FormFields();
+
+var params = {
+		Bucket: 'lab4-weeia/piotrwozniak',
+	};
+
+	s3.listObjects(params, function(err, data) {
+		if (err) console.log(err, err.stack);
+		else     console.log(data);
+		
+		
+		var linki = [];
+		
+		//przelatujemy przez każdy plik z bucketu
+		for(var i in data.Contents) {
+			//jeżeli nie jest to nazwa bucketu tylko plik
+		
+				linki.push( {nazwa: data.Contents[i].Key.substring(13)});
+			
+		}
+	
+	
+	});	
+	
+	
+	
 	
 	fields.push( {name : 'x-amz-meta-uploader', value : 'piotr.wozniak'});
 
+
+
 	var f2=s3Form.addS3CredientalsFields(fields,awsConfig);
-	callback(null, {template: INDEX_TEMPLATE, params:{fields:fields,bucket:"lab4-weeia"}});
+	callback(null, {template: INDEX_TEMPLATE, params:{fields:fields,bucket:"lab4-weeia", links:linki}});
 
 					
 
