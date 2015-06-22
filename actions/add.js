@@ -25,7 +25,8 @@ var task = function(request, callback){
 	var fields=s3Form.generateS3FormFields();
 
 var params = {
-		Bucket: 'lab4-weeia/piotrwozniak',
+		Bucket: 'lab4-weeia',
+		Prefix: 'piotrwozniak'
 	};
 
 	s3.listObjects(params, function(err, data) {
