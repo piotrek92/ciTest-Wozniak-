@@ -39,20 +39,33 @@
 	</div>
 	</div>
 </form>
+</section>
 
- <div>
-  
-  	<label for="lista">Lista plików nieprzetworzonych</label>
-	<% links.forEach(function(elem){ %>
-							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">plik</a> |  
+
+
+<section id="section1" class="panel panel-default">
+			<div class="panel-heading">
+			<div class="container">
+	    		<h3 class="panel-title">Lista plików już przetworzonych</h3>
+	    		</div>
+		  	</div>
+	  		<div class="panel-body">
+				<div class="container">
+					<div class="col-xs-5">
+						<% links.forEach(function(elem){ %>
+							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">stary</a> |  
 							<%= elem.nazwa  %><br>
-						<% }); %> 
-  	</div>
+						<%}); %> 
+					</div>
+				</div>
+	  		</div>
+ 
 	  		</div>
 			<footer class="panel-footer">
 				
 			</footer>
 		</section>
+		
 	</div>		
 	</body>
 </html>

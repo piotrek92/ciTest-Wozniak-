@@ -11,7 +11,7 @@ var s3 = new AWS.S3();
 AWS.config.loadFromPath('./config.json');
 
 var task = function(request, callback){
-		var linki = [];
+	
 	//1. load configuration
 	var awsConfig = helpers.readJSONFile(AWS_CONFIG_FILE);
 	var policyData = helpers.readJSONFile(POLICY_FILE);
