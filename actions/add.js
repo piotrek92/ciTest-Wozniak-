@@ -15,8 +15,32 @@ var task = function(request, callback){
 
 
 var params = {
-		Bucket: 'lab4-weeia'
+		Bucket: 'lab4-weeia',
+		Prefix:'piotrwozniak'
 	};
+	
+	
+var params1 = {
+		Bucket: 'lab4-weeia',
+		Prefix:'processed'
+	};
+
+	
+	
+		var linkiprzet=[];
+
+s3.listObjects(params1, function(err, data){
+	
+		for(var i in data.Contents) {
+				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(13)});
+		}
+		
+		
+	
+	
+});
+
+
 
 
 
@@ -25,19 +49,15 @@ var params = {
 		if (err) console.log(err, err.stack);
 		else     console.log(data);
 	var linki = [];
-	var linkiprzet=[];
+
 		//przelatujemy przez każdy plik z bucketu
 		for(var i in data.Contents) {
 			//jeżeli nie jest to nazwa bucketu tylko plik
-		if (data.Contents[i].Prefix=="piotrwozniak"){
+
 				linki.push( {nazwa: data.Contents[i].Key.substring(13)});
+	
 		
-		}
 		
-			if (data.Contents[i].Prefix == "processed"){
-				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(13)});
-		
-		}
 		
 		
 		
