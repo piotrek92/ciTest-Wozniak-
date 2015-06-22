@@ -16,9 +16,30 @@ var task = function(request, callback){
 
 var params = {
 		Bucket: 'lab4-weeia',
-		Prefix:'processed'
-};
+		Prefix:'piotrwozniak'
+	};
 	
+	
+var params1 = {
+		Bucket: 'lab4-weeia',
+		Prefix:'processed'
+	};
+
+	
+	
+		var linkiprzet=[];
+
+s3.listObjects(params1, function(err, data){
+	
+		for(var i in data.Contents) {
+				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(13)});
+		}
+		
+		
+	
+	
+});
+
 
 
 
@@ -61,7 +82,7 @@ var params = {
 
 
 	var f2=s3Form.addS3CredientalsFields(fields,awsConfig);
-	callback(null, {template: INDEX_TEMPLATE, params:{fields:fields,bucket:"lab4-weeia", links:linki}});
+	callback(null, {template: INDEX_TEMPLATE, params:{fields:fields,bucket:"lab4-weeia", links:linki, linkiprzet:linkiprzet}});
 
 					
 
