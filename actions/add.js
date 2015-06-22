@@ -12,6 +12,10 @@ AWS.config.loadFromPath('./config.json');
 
 var task = function(request, callback){
 	
+	var linki=[];
+		linki.push( {nazwa: "cokolwiek"});
+	
+	
 	//1. load configuration
 	var awsConfig = helpers.readJSONFile(AWS_CONFIG_FILE);
 	var policyData = helpers.readJSONFile(POLICY_FILE);
