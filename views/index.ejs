@@ -32,7 +32,7 @@
   <div>
   
   	<label for="lista">Lista plików nieprzetworzonych</label>
-	<% fileList.forEach(function(elem){ %>
+	<% linki.forEach(function(elem){ %>
 							<a href="https://s3-us-west-2.amazonaws.com/lab4-weeia/piotrwozniak/<%=elem.nazwa%>">plik</a> |  
 							<%= elem.nazwa  %><br>
 						<% }); %> 
