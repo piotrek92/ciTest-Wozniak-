@@ -32,7 +32,7 @@ var params1 = {
 s3.listObjects(params1, function(err, data){
 	
 		for(var i in data.Contents) {
-				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(13)});
+				linkiprzet.push( {nazwa: data.Contents[i].Key.substring(10)});
 		}
 		
 		
