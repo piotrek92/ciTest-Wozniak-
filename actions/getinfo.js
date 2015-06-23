@@ -15,6 +15,10 @@ var linkKolejki = 'https://sqs.us-west-2.amazonaws.com/983680736795/WozniakSQS';
 var sqs=new AWS.SQS();
 var UPLOAD_TEMPLATE = "wyslano.ejs";
 
+
+var simpledb = new AWS.SimpleDB();
+
+
 //funkcja która zostanie wykonana po wejściu na stronę 
 //request dane o zapytaniu, callback funkcja zwrotna zwracająca kod html
 var task =  function(request, callback){
@@ -37,6 +41,54 @@ var task =  function(request, callback){
 			console.log(err, err.stack);
 		}
 		else {
+			
+		////////////////////////////////////////////////////	
+		
+                                var params = {
+  DomainName: 'wozniakDomain' /* required */
+};
+simpledb.createDomain(params, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else     console.log(data);           // successful response
+});
+
+
+                                                 var date = new Date().toISOString();
+
+                                                var paramsdb = {
+                                                        Attributes: [
+                                                                { Name: key, Value: date, Replace: true}
+                                                        ],
+                                                        DomainName: "wozniakDomain",
+                                                        ItemName: 'ITEM001'
+                                                };
+
+                                                        simpledb.putAttributes(paramsdb, function(err, datass) {
+
+                                                        if(err){        console.log('ERROR'+err, err.stack);}
+                                                        else{
+                                                        }});
+
+
+                                                        var paramsXXXX4 = {
+                                                                                                DomainName: 'wozniakDomain', //required
+                                                                                                ItemName: 'ITEM001', // required
+                                                                                        };
+                                                                                        simpledb.getAttributes(paramsXXXX4, function(err, data) {
+                                                                                                if (err) {
+                                                                                                        console.log(err, err.stack); // an error occurred
+                                                                                                }
+                                                                                                else {
+                                                                                                        console.log(data);           // successful response
+                                                                                                }});
+
+
+
+			
+			//////////////////////////////////////////
+			
+			
+			
 										//obiekt z parametrami do wysłania wiadomości dla kolejki 
 										var sendparms={
 											//MessageBody: bucket+"###"+key,
