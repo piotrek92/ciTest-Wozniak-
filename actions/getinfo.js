@@ -1,17 +1,17 @@
 var AWS = require("aws-sdk");
 var os = require("os");
 var crypto = require('crypto');
-//zawiera funkcje pomocnicze generowania skrótów robienia z jonson obiektu ...
+
 var helpers = require("../helpers");
-//accessKeyId ... klucze do amazona 
+
 AWS.config.loadFromPath('./config.json');
-//obiekt dla instancji S3 z aws-sdk
+
 var s3 = new AWS.S3();
-//plik z linkiem do kolejki
+
 var APP_CONFIG_FILE = "./app.json";
 
 var linkKolejki = 'https://sqs.us-west-2.amazonaws.com/983680736795/WozniakSQS';
-//obiekt kolejki z aws-sdk
+
 var sqs=new AWS.SQS();
 var UPLOAD_TEMPLATE = "wyslano.ejs";
 
@@ -19,37 +19,36 @@ var UPLOAD_TEMPLATE = "wyslano.ejs";
 var simpledb = new AWS.SimpleDB();
 
 
-//funkcja która zostanie wykonana po wejściu na stronę 
-//request dane o zapytaniu, callback funkcja zwrotna zwracająca kod html
+
 var task =  function(request, callback){
 	
-	//dane otrzymane z amazona po wrzuceniu
-	//$_GET['bucket'], $_GET['key'], $_GET['etag']
+	//otrzymaj od amazona adres bucketu i nazwe pliku
+
 	var bucket =  request.query.bucket;
 	var key =  request.query.key;
 	
-	//tablica z parametrami do pobrania naszego wrzuconego pliku i meta danych dla getObject
+
 	var params = {
 		Bucket: bucket,
 		Key: key
 	};
 
-	//pobieramy plik (obiekt) i dane o nim
+
 	s3.getObject(params, function(err, data) {
 		if (err) {
-			//jeżeli nie wrzucono takiego pliku a jest próba odwołania się do niego będzie log na konsoli
+	
 			console.log(err, err.stack);
 		}
 		else {
 			
-		////////////////////////////////////////////////////	
+		////////////////////////////////////////////////////	czesc odpowiedzialna za wrzucenie daty i nazwy pliku do simpledb
 		
                                 var params = {
-  DomainName: 'wozniakDomain' /* required */
+  DomainName: 'wozniakDomain' 
 };
 simpledb.createDomain(params, function(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
+  if (err) console.log(err, err.stack); 
+  else     console.log(data);          
 });
 
 
@@ -70,11 +69,11 @@ simpledb.createDomain(params, function(err, data) {
                                                         }});
 
 
-                                                        var paramsXXXX4 = {
+                                                        var params4 = {
                                                                                                 DomainName: 'wozniakDomain', //required
                                                                                                 ItemName: 'ITEM001', // required
                                                                                         };
-                                                                                        simpledb.getAttributes(paramsXXXX4, function(err, data) {
+                                                                                        simpledb.getAttributes(params4, function(err, data) {
                                                                                                 if (err) {
                                                                                                         console.log(err, err.stack); // an error occurred
                                                                                                 }
@@ -85,32 +84,30 @@ simpledb.createDomain(params, function(err, data) {
 
 
 			
-			//////////////////////////////////////////
+			////////////////////////////////////////// dodaj do kolejki nazwę bucketu i pliku
 			
 			
 			
-										//obiekt z parametrami do wysłania wiadomości dla kolejki 
+								
 										var sendparms={
-											//MessageBody: bucket+"###"+key,
+										
 											MessageBody: "{\"bucket\":\""+bucket+"\",\"key\":\""+key+"\"} ",
 											QueueUrl: linkKolejki,
 									
 										};
-										//wysłanie wiadomości do kolejki
+									
 										sqs.sendMessage(sendparms, function(err,data2){
 											if(err) {
 												console.log(err,err.stack);
 												callback(null,'error');
 											}
 											else {
-												console.log("Prosba o wyliczenie sktotu dodana do kolejki");
+												console.log("Prosba o wyliczenie skrotu dodana do kolejki");
 												
 											}
 					
 											
-											//etag: +etag
-											//IP: +data.Metadata.ip
-											//Uploader: +data.Metadata.uploader
+											
 											});		
 							
 		}		

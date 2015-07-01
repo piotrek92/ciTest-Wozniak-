@@ -26,7 +26,7 @@ var params1 = {
 	};
 
 	
-	
+///////////////////////////	wylistuj przetworzone pliki
 		var linkiprzet=[];
 
 s3.listObjects(params1, function(err, data){
@@ -41,7 +41,7 @@ s3.listObjects(params1, function(err, data){
 });
 
 
-
+///////////////////////// wylistuj wszystkie pozostałe pliki
 
 
 
@@ -50,9 +50,9 @@ s3.listObjects(params1, function(err, data){
 		else     console.log(data);
 	var linki = [];
 
-		//przelatujemy przez każdy plik z bucketugit comm
+
 		for(var i in data.Contents) {
-			//jeżeli nie jest to nazwa bucketu tylko plik
+	
 
 				linki.push( {nazwa: data.Contents[i].Key.substring(13)});
 	
@@ -62,16 +62,15 @@ s3.listObjects(params1, function(err, data){
 		
 		
 		}
-	//1. load configuration
+
 	var awsConfig = helpers.readJSONFile(AWS_CONFIG_FILE);
 	var policyData = helpers.readJSONFile(POLICY_FILE);
-	
-	//2. prepare policy
+
 	var policy = new Policy(policyData);
 
-	//3. generate form fields for S3 POST
+
 	var s3Form = new S3Form(policy);
-	//4. get bucket name
+
 	var fields=s3Form.generateS3FormFields();
 
 
